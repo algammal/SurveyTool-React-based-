@@ -1,13 +1,13 @@
 import React from 'react';
-
+import {Link ,NavLink} from 'react-router-dom';
 
 const Nav = () => {
     return(
-        <div>
-            <a href='#'>Logo</a>
+        <div className='Nav-main-cont'>
+            <a className='hide' href='#'>Logo</a>
             <ul className="col-xs-12 menu-allitems no-padding">
-                <a href='/'>Home</a>
-                <a href='/about'>About</a>
+                <NavLink className='menu-item' exact to='/'>Home</NavLink>
+                <NavLink className='menu-item' to='/about'>About</NavLink>
             </ul>
         </div>
     )
