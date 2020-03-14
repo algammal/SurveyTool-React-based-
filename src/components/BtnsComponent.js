@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 
-
-class Home extends Component {
+class BtnsComp extends Component {
     render(){
     return(
         <div className='newline'>
-             <div className='newline'>
             <button class="quest-itemplus btn btn-lg  glyphicon glyphicon-plus-sign">
                 <span class="add-txt">Add Question</span>
             </button>
@@ -13,10 +11,7 @@ class Home extends Component {
                 <span class="add-txt">Save Survey</span>
             </button>   
         </div>
-            <h2>Home</h2>
-            
-        </div>
     )
     }
 }
-export default Home
+export default BtnsComp

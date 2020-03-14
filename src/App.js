@@ -5,6 +5,8 @@ import './App.css';
 import Nav from './components/Nav'
 import Home from './components/Home'
 import About from './components/About'
+import Header from './components/Header'
+
 
 function App() {
   return (
@@ -13,9 +15,11 @@ function App() {
           <div className='col-xs-12 admin page-container no-padding'>
             <div className='col-xs-12 menu-contaier no-padding'>
                 <Nav/>
+                <Header/>
                 <Route exact path='/' component={Home}/>
                 <Route path='/about' component={About}/>
             </div>
+             
           </div>
       </div>
     </BrowserRouter>
