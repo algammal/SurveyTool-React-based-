@@ -51,9 +51,9 @@ class Home extends Component {
             <button className="save-survey btn btn-lg  glyphicon glyphicon-floppy-disk">
                 <span className="add-txt">Save Survey</span>
             </button>
-            <this.cardsRender />
-            <this.dummyButton name="AlGammal" />
-            <DataEdit showModal={this.state.showModal} hideModal ={this.hideModal}/>
+            <this.cardsRender key='cardrender'/>
+            <this.dummyButton name="AlGammal" key='example'/>
+            <DataEdit key='dataedit' showModal={this.state.showModal} hideModal ={this.hideModal}/>
         }
         </div>
     )

@@ -1,21 +1,7 @@
 import React, { Component } from 'react';
 
 class Card extends Component {
-    state={
-        items:[
-            { id:1 , name:'ahmed' , age:28 },
-            { id:2 , name:'ibrahim' , age:30 },
-            { id:3 , name:'mohamed' , age:40 }
-        ] 
-    }
-    handelClick = (e) => {
-        let items=this.state.items
-        items.push({id:4 ,name:'hussien',age:14} )
-        this.setState({
-            items :items
-        })
-    }
-
+  
     showModal = () =>{
         this.props.showModalFunc();
         console.log("this is props",this.props)
@@ -23,7 +9,7 @@ class Card extends Component {
     render(){
     return(
         //if(this.props.type === "mcq"){ 
-        <div className='newline'>
+        <div key='card' className='newline'>
              <div className="content-added container">
                     <div className="question-item col-xs-12">
                          <button  className="remove-question glyphicon glyphicon-minus-sign" type="button"></button>
@@ -37,6 +23,9 @@ class Card extends Component {
                         <div className="check-answer">
                             <input type="checkbox" id="1" name="subscribe" value="newsletter"/>
                             <label className="chk-ans">red</label>
+                        </div>
+                        <div className='textField'>
+                        <textarea className="textArea"></textarea>
                         </div>
                         </form>
                         </div>

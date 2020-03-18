@@ -287,10 +287,21 @@ padding: 7px;
 .content-added{padding-right:0px; padding-left:0px;margin-top:20px;}
 .question-item {
     background-color: #ffffff4d;
-    height: 130px;
+    height: auto;
     border-radius: 5px;
-	padding-right: 0px;
+	padding: 15px;
 	margin-top:20px;
+}
+.modal-title{
+  width:100%;
+}
+.textArea{
+  width: 100%;
+  border: #ccc;
+  background-color: #ffffffc9;
+  border-radius: 4px;
+  max-height: 90px;
+  min-height: 50px;
 }
 .question.admin{font-size: 18px;margin-top: 10px;}
 .admin.page-container{height:100%;}
