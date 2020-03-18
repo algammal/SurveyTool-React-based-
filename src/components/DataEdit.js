@@ -1,20 +1,14 @@
 import React, { Component } from 'react';
 import Modal from "react-bootstrap/Modal";
 
-const DataEdit = () => {
-    const showModal = () => {
-      setIsOpen(true);
-    };
-  
-    const hideModal = () => {
-      setIsOpen(false);
-    };
-  
+class  DataEdit extends Component {
+  render(){
     return (
-        <Modal show={isOpen} onHide={hideModal}>
+      <>
+       <Modal show={this.props.showModal} onHide = {this.props.hideModal}>
           <Modal.Header>
             <Modal.Title>
-            <button type="button" className="close" onClick={hideModal}>&times;</button>
+            <button type="button" className="close" onClick = {this.props.hideModal}>&times;</button>
               <h4 className="modal-title">Type Question</h4>
             </Modal.Title>
           </Modal.Header>
@@ -26,7 +20,7 @@ const DataEdit = () => {
         
                   <div className="check-answer">
                     <input type="checkbox" id="mcq" name="subscribe" value="newsletter"/>
-                    <label className="chk-ans" for="mcq">MCQ</label>
+                    <label className="chk-ans" htmlFor="mcq">MCQ</label>
                     <input className="chk-ans" type="checkbox" id="commentry" name="subscribe" value="newsletter"/>
                     <label className="chk-ans" for='commentry'>Commentry</label>
                   
@@ -46,10 +40,11 @@ const DataEdit = () => {
           </Modal.Body>
           <Modal.Footer>
             <button className="btn modal-submit-btn" type="submit" value="Submit">Submit</button>
-                <button type="button" className="btn btn-default" onClick={hideModal}>Close</button>
+                <button type="button" className="btn btn-default" onClick={this.props.hideModal}>Close</button>
           </Modal.Footer>
         </Modal>
       </>
     );
+    }
   };
   export default DataEdit
