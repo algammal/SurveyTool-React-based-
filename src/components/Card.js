@@ -18,17 +18,10 @@ class Card extends Component {
     render(){
     return(
         <div className='newline'>
-                <button onClick={this.handelClick} className="quest-itemplus btn btn-lg  glyphicon glyphicon-plus-sign">
-                <span className="add-txt">Add Question</span>
-            </button>
-            <button className="save-survey btn btn-lg  glyphicon glyphicon-floppy-disk">
-                <span className="add-txt">Save Survey</span>
-            </button> 
-             <div className="example-1 content-added container" id="content">
-                <div className="example-2">
+             <div className="content-added container">
                     <div className="question-item col-xs-12">
                          <button  className="remove-question glyphicon glyphicon-minus-sign" type="button"></button>
-                         <button type="button" className="btn btn-info btn-lg edit-btn glyphicon glyphicon-edit" data-toggle="modal" data-target="#myModal"><span className="add-txt">Edit Question</span></button>
+                         <button type="button" onClick={this.props.editBtn} className="btn btn-info btn-lg edit-btn glyphicon glyphicon-edit"><span className="add-txt">Edit Question</span></button>
                          <div  className="col-xs-12 question admin">
                             
                         </div>
@@ -41,7 +34,6 @@ class Card extends Component {
                         </form>
                         </div>
                     </div>
-                </div>
             </div>
    
         </div>
