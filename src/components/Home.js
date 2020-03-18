@@ -6,8 +6,20 @@ class Home extends Component {
         super();
         this.state = {
             showModal:false,
-            cards:[]
+            cards:[]   
         }
+    }
+    cardsRender = () =>{
+        let tempstate = JSON.parse(JSON.stringify(this.state));
+        let cards = tempstate.cards;
+        let ArrayOfCards = [];
+        let key = 0 ;
+        cards.map((card)=>{
+            let tempCard  = <Card showModalFunc = {this.showModal} questionText={card.questionText} type={card.type} index ={key} />;
+            ArrayOfCards.push(tempCard)
+            key++;
+        })
+        return ArrayOfCards;
     }
     showModal = () =>{
         let tempstate = JSON.parse(JSON.stringify(this.state));
@@ -25,22 +37,11 @@ class Home extends Component {
         tempstate.showModal = false;
         this.setState(tempstate)
     }
-    cardsRender = () =>{
-        let tempstate = JSON.parse(JSON.stringify(this.state));
-        let cards = tempstate.cards;
-        let ArrayOfCards = [];
-        let key = 0 ;
-        cards.map((card)=>{
-            let tempCard  = <Card showModalFunc = {this.showModal} questionText={card.questionText} type={card.type} index ={key} />;
-            ArrayOfCards.push(tempCard)
-            key++;
-        })
-        return ArrayOfCards;
-    }
+  
 
-    dummyButton = (props) =>{
-        return <div>{props.name}</div>
-    }
+    // dummyButton = (props) =>{
+    //     return <div>{props.name}</div>
+    // }
 
     render(){ 
     return(
@@ -52,9 +53,8 @@ class Home extends Component {
                 <span className="add-txt">Save Survey</span>
             </button>
             <this.cardsRender key='cardrender'/>
-            <this.dummyButton name="AlGammal" key='example'/>
+            {/* <this.dummyButton name="AlGammal" key='example'/> */}
             <DataEdit key='dataedit' showModal={this.state.showModal} hideModal ={this.hideModal}/>
-        }
         </div>
     )
     }

@@ -1,8 +1,23 @@
 import React, { Component } from 'react';
 import Modal from "react-bootstrap/Modal";
-
+import McqBox from './CheckMethod'
 class  DataEdit extends Component {
+  constructor() {
+  	super();
+    
+    this.state = { checked: false };
+    this.handleChange = this.handleChange.bind(this);
+  }
+  
+  handleChange() {
+  	this.setState({
+    	checked: !this.state.checked
+    })
+  }
   render(){
+    const content = this.state.checked 
+    	? <div> <McqBox/> </div>
+      : null;
     return (
       <div key='modal'>
        <Modal show={this.props.showModal} onHide = {this.props.hideModal}>
@@ -19,24 +34,12 @@ class  DataEdit extends Component {
                 <div className="col-xs-12 question-type">
         
                   <div className="check-answer">
-                    <input type="checkbox" id="mcq" name="subscribe" value="newsletter"/>
+                    <input type="checkbox" id="mcq" checked={ this.state.checked } onChange={ this.handleChange } name="subscribe" value="newsletter"/>
                     <label className="chk-ans" htmlFor="mcq">MCQ</label>
                     <input className="chk-ans-input" type="checkbox" id="commentry" name="subscribe" value="newsletter"/>
                     <label className="chk-ans" for='commentry'>Commentry</label>
-                    <input className="chk-ans-input" type="checkbox" id="both" name="subscribe" value="newsletter"/>
-                    <label className="chk-ans" for='bothy'>Both</label>
                   </div>
-    
-                 <div id="btnCheckin" className="textBoxComp">
-                    
-                    <button className="btnCheckinBtn glyphicon glyphicon-plus-sign" id="btnCheckinBtn"><span className="add-txt">Add Choice</span></button>
-                    <button className="btnCheckinBtn-remove glyphicon glyphicon-minus-sign" type="button"  id="removeButton"><span className="add-txt">Remove Choice</span></button>
-                  
-                    <div id="TextBoxesGroup">
-                        <div id="TextBoxDiv1"></div>
-                    </div>
-  
-                </div>
+                  {content}
         </div>
           </Modal.Body>
           <Modal.Footer>

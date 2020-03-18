@@ -25,7 +25,6 @@ class Card extends Component {
                             <label className="chk-ans">red</label>
                         </div>
                         <div className='textField'>
-                        <textarea className="textArea"></textarea>
                         </div>
                         </form>
                         </div>
