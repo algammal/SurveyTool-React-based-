@@ -295,6 +295,14 @@ padding: 7px;
 .modal-title{
   width:100%;
 }
+.TextBoxesGroup{
+  display: flex;
+  flex-flow: column;
+  width: 80%;
+}
+.TextBoxesGroup input{
+  margin-top:5px;
+}
 .textArea{
   width: 100%;
   border: #ccc;

@@ -4,7 +4,6 @@ class Card extends Component {
   
     showModal = () =>{
         this.props.showModalFunc();
-        console.log("this is props",this.props)
     }
     render(){
     return(

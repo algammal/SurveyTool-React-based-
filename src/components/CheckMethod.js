@@ -3,26 +3,35 @@ class  McqBox extends Component {
     constructor(){
         super();
         this.state = {
-            inputs:[]   
+            inputs:[] ,
+            name:''
         }
     }
     showInputs = () =>{
         let tempstate = JSON.parse(JSON.stringify(this.state));
-        let inputs = {id:"0",type:"input"};
+        let inputs = {id:0,type:"input"};
         tempstate.inputs.push(inputs);
         this.setState(tempstate)
-        console.log(tempstate)
     }
-    removeInputs =() =>{
-        this.props.onDelete(this.props.searchItem)
-    }
+    removeInputs=(input)=>{
+        this.setState((currentState)=>({
+          inputs:currentState.inputs.filter((c)=>{
+            return c.id !== input.id
+          })
+        }))
+       }
+       getText = (e) =>{
+        this.setState({
+            name: e.target.value
+        })
+       }
     inputsRender = () =>{
         let tempstate = JSON.parse(JSON.stringify(this.state));
         let inputs = tempstate.inputs;
         let ArrayOfInputs = [];
         let key = 1 ;
         inputs.map((input)=>{
-            let tempCard  = <input id={input.id} type={inputs.type} value='Add Choice' placeholder='Add Choice'/>;
+            let tempCard  = <input id={Math.random()} onChange={this.getText} type={inputs.type} placeholder='Add Choice'/>;
             ArrayOfInputs.push(tempCard);
             key++;
         })
@@ -31,14 +40,13 @@ class  McqBox extends Component {
     render(){
         return(
             <div className="textBoxComp">
+                        <button onClick={this.showInputs} className="btnCheckinBtn glyphicon glyphicon-plus-sign" id="btnCheckinBtn"><span className="add-txt">Add Choice</span></button>
+                        <button onClick={this.removeInputs} className="btnCheckinBtn-remove glyphicon glyphicon-minus-sign" type="button"  id="removeButton"><span className="add-txt">Remove Choice</span></button>
                     
-                    <button onClick={this.showInputs} className="btnCheckinBtn glyphicon glyphicon-plus-sign" id="btnCheckinBtn"><span className="add-txt">Add Choice</span></button>
-                    <button onClick={this.removeInputs} className="btnCheckinBtn-remove glyphicon glyphicon-minus-sign" type="button"  id="removeButton"><span className="add-txt">Remove Choice</span></button>
-                  
-                    <div id="TextBoxesGroup">
-                        <this.inputsRender/>
-                    </div>
-  
+                        <div className="TextBoxesGroup">
+                            <this.inputsRender/>
+                        <div>{this.state.name}</div>
+                        </div>
             </div>
     )
     }
