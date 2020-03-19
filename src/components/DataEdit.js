@@ -1,33 +1,55 @@
 import React, { Component } from 'react';
 import Modal from "react-bootstrap/Modal";
 import McqBox from './CheckMethod';
-import serializeForm from 'form-serialize';
+//import serializeForm from 'form-serialize';
 
 class  DataEdit extends Component {
   constructor() {
   	super();
     
-    this.state = { checked: false , name:'' };
+    this.state = { 
+      mcqCheckBox: false ,
+      commentryCheckBox:false,
+       name:'',
+       questionText:"",
+       choices:[]
+      };
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  addChoice = (choice) =>{
+    let tempState = JSON.parse(JSON.stringify(this.state))
+    tempState.choices.push(choice)
+    this.setState(tempState)
   }
   
   handleChange() {
   	this.setState({
-    	checked: !this.state.checked
+    	mcqCheckBox: !this.state.mcqCheckBox
     })
+  }
+
+  handleQuestionText = (e) =>{
+    let tempState = JSON.parse(JSON.stringify(this.state))
+    tempState.questionText = e.target.value;
+    this.setState(tempState)
   }
   
   handleSubmit = (e) =>{
     e.preventDefault();
-    const values=serializeForm(e.target ,{ hash:true})
-    console.log('values',values)
-    if(this.props.onCreateDataEdit){
-      this.props.onCreateDataEdit(values)
-    }
+   // const values=serializeForm(e.target ,{ hash:true})
+    //console.log('values',values)
+    //if(this.props.onCreateDataEdit){
+     // this.props.onCreateDataEdit(values)
+   // }
 }
+
+  saveModalData=()=>{
+    console.log(this.state)
+  }
   render(){
-    const content = this.state.checked 
-    	? <div> <McqBox/> </div>
+    const content = this.state.mcqCheckBox 
+    	? <div> <McqBox  choiceFunction = {this.addChoice} /> </div>
       : null;
     return (
       <div key='modal'>
@@ -41,21 +63,21 @@ class  DataEdit extends Component {
           <form onSubmit={this.handleSubmit} >
           <Modal.Body>
                 <div className="col-xs-12 input-answer">     
-                  <input id="user_input" className="text-answer" type="text" name="answer" placeholder="Type your question"/>  
+                  <input id="user_input" className="text-answer" type="text" name="answer" onChange ={this.handleQuestionText} placeholder="Type your question"/>  
                 </div>
                 <div className="col-xs-12 question-type">
         
                   <div className="check-answer">
-                    <input type="checkbox" id="mcq" checked={ this.state.checked } onChange={ this.handleChange } name="subscribe" value="newsletter"/>
+                    <input type="checkbox" id="mcq" checked={ this.state.mcqCheckBox } onChange={ this.handleChange } name="subscribe" value="newsletter"/>
                     <label className="chk-ans" htmlFor="mcq">MCQ</label>
                     <input className="chk-ans-input" type="checkbox" id="commentry" name="subscribe" value="newsletter"/>
-                    <label className="chk-ans" for='commentry'>Commentry</label>
+                    <label className="chk-ans" htmlFor='commentry'>Commentry</label>
                   </div>
                   {content}
         </div>
           </Modal.Body>
           <Modal.Footer>
-            <button  className="btn modal-submit-btn" type="submit" value="Submit">Submit</button>
+            <button  className="btn modal-submit-btn" type="submit" value="Submit" onClick={this.saveModalData}  >Submit</button>
                 <button type="button" className="btn btn-default" onClick={this.props.hideModal}>Close</button>
           </Modal.Footer>
           </form>

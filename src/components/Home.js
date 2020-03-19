@@ -24,8 +24,8 @@ class Home extends Component {
     showModal = () =>{
         let tempstate = JSON.parse(JSON.stringify(this.state));
         tempstate.showModal = true;
-        let card = {questionText:"What is your age?",type:"mcq"};
-        tempstate.cards.push(card);
+        // let card = {questionText:"What is your age?",type:"mcq"};
+        //tempstate.cards.push(card);
         this.setState(tempstate)
     }
     editShowModal = ()=>{
