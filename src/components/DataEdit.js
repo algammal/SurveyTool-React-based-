@@ -42,15 +42,12 @@ class  DataEdit extends Component {
   
   handleSubmit = (e) =>{
     e.preventDefault();
-   // const values=serializeForm(e.target ,{ hash:true})
-    //console.log('values',values)
-    //if(this.props.onCreateDataEdit){
-     // this.props.onCreateDataEdit(values)
-   // }
+    let card = {questionText:this.state.questionText,type:this.state.mcqCheckBox?'mcq':'commentry'}
+    this.props.newCardFunction(card)
+    this.props.hideModalProps();
 }
 
   saveModalData=()=>{
-    console.log(this.state)
   }
   render(){
     const content = this.state.mcqCheckBox 
@@ -58,10 +55,10 @@ class  DataEdit extends Component {
       : null;
     return (
       <div key='modal'>
-       <Modal show={this.props.showModal} onHide = {this.props.hideModal}>
+       <Modal show={this.props.showModalProps} onHide = {this.props.hideModalProps}>
           <Modal.Header>
             <Modal.Title>
-            <button type="button" className="close" onClick = {this.props.hideModal}>&times;</button>
+            <button type="button" className="close" onClick = {this.props.hideModalProps}>&times;</button>
               <h4 className="modal-title">Type Question</h4>
             </Modal.Title>
           </Modal.Header>
@@ -83,7 +80,7 @@ class  DataEdit extends Component {
           </Modal.Body>
           <Modal.Footer>
             <button  className="btn modal-submit-btn" type="submit" value="Submit" onClick={this.saveModalData}  >Submit</button>
-                <button type="button" className="btn btn-default" onClick={this.props.hideModal}>Close</button>
+                <button type="button" className="btn btn-default" onClick={this.props.hideModalProps}>Close</button>
           </Modal.Footer>
           </form>
         </Modal>

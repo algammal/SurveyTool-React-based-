@@ -7,7 +7,8 @@ class  McqBox extends Component {
             name:''
         }
     }
-    showInputs = () =>{
+    showInputs = (e) =>{
+        e.preventDefault();
         let tempstate = JSON.parse(JSON.stringify(this.state));
         let inputs = {type:"text",text:""};
         tempstate.inputs.push(inputs);
@@ -15,6 +16,7 @@ class  McqBox extends Component {
     }
 
     removeInputs=(input)=>{
+        input.preventDefault();
         this.setState((currentState)=>({
           inputs:currentState.inputs.filter((c)=>{
             return c.id !== input.id
@@ -37,7 +39,6 @@ class  McqBox extends Component {
         inputs.map((input)=>{
             let tempCard  = <input id={key} key={key} onChange={this.getText} type={inputs.type} placeholder='Add Choice'/>;
             ArrayOfInputs.push(tempCard);
-            console.log(key)
             key++;
         })
         return ArrayOfInputs;
