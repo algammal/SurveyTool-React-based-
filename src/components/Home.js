@@ -9,6 +9,12 @@ class Home extends Component {
             cards:[]   
         }
     }
+
+    createCard = (newCard) =>{
+        let tempstate = JSON.parse(JSON.stringify(this.state));
+        tempstate.cards.push(newCard);
+        this.setState(tempstate);
+    }
     cardsRender = () =>{
         let tempstate = JSON.parse(JSON.stringify(this.state));
         let cards = tempstate.cards;
@@ -54,7 +60,7 @@ class Home extends Component {
             </button>
             <this.cardsRender key='cardrender'/>
             {/* <this.dummyButton name="AlGammal" key='example'/> */}
-            <DataEdit key='dataedit' showModal={this.state.showModal} hideModal ={this.hideModal}/>
+            <DataEdit newCardFunction={this.createCard} key='dataedit' showModal={this.state.showModal} hideModal ={this.hideModal}/>
         </div>
     )
     }

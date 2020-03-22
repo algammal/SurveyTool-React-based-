@@ -10,22 +10,27 @@ class  DataEdit extends Component {
     this.state = { 
       mcqCheckBox: false ,
       commentryCheckBox:false,
-       name:'',
        questionText:"",
        choices:[]
       };
     this.handleChange = this.handleChange.bind(this);
+    this.handleCommentryChange = this.handleCommentryChange.bind(this);
   }
-
   addChoice = (choice) =>{
     let tempState = JSON.parse(JSON.stringify(this.state))
-    tempState.choices.push(choice)
-    this.setState(tempState)
+    tempState.choices[choice.id] = choice.choiceText
+    this.setState(tempState);
   }
   
   handleChange() {
   	this.setState({
     	mcqCheckBox: !this.state.mcqCheckBox
+    })
+  }
+
+  handleCommentryChange() {
+  	this.setState({
+    	commentryCheckBox: !this.state.commentryCheckBox
     })
   }
 
@@ -70,7 +75,7 @@ class  DataEdit extends Component {
                   <div className="check-answer">
                     <input type="checkbox" id="mcq" checked={ this.state.mcqCheckBox } onChange={ this.handleChange } name="subscribe" value="newsletter"/>
                     <label className="chk-ans" htmlFor="mcq">MCQ</label>
-                    <input className="chk-ans-input" type="checkbox" id="commentry" name="subscribe" value="newsletter"/>
+                    <input className="chk-ans-input" type="checkbox" id="commentry" name="subscribe" onChange={ this.handleCommentryChange } value="newsletter"/>
                     <label className="chk-ans" htmlFor='commentry'>Commentry</label>
                   </div>
                   {content}
