@@ -21,7 +21,7 @@ class Home extends Component {
         let ArrayOfCards = [];
         let key = 0 ;
         cards.map((card)=>{
-            let tempCard  = <Card showModalFunc = {this.showModal} questionText={card.questionText} type={card.type} index ={key} />;
+            let tempCard  = <Card showModalFunc = {this.showModal} cardData={card}  index ={key} />;
             ArrayOfCards.push(tempCard)
             key++;
         })

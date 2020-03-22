@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { renderIntoDocument } from 'react-dom/test-utils';
 
 class Card extends Component {
   
@@ -14,17 +15,24 @@ class Card extends Component {
                          <button  className="remove-question glyphicon glyphicon-minus-sign" type="button"></button>
                          <button type="button" onClick={this.showModal} className="btn btn-info btn-lg edit-btn glyphicon glyphicon-edit"><span className="add-txt">Edit Question</span></button>
                          <div  className="col-xs-12 question admin">
-                            {this.props.questionText}
+                            {this.props.cardData.questionText}
                         </div>
                         
                         <div className="col-xs-12 mcq-answer">
                         <form>
-                        <div className="check-answer">
+                        {this.props.cardData.choices.map((choice)=>{
+                             return (<div className="check-answer">
                             <input type="checkbox" id="1" name="subscribe" value="newsletter"/>
-                            <label className="chk-ans">red</label>
+                        <label className="chk-ans">{choice}</label>
                         </div>
+                        )
+                        })}
+                       
+                        {this.props.cardData.commentryCheckBox?
                         <div className='textField'>
+                            <textarea className='textArea'></textarea>
                         </div>
+                         : ''}
                         </form>
                         </div>
                     </div>

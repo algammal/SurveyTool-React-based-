@@ -30,7 +30,7 @@ class  DataEdit extends Component {
 
   handleCommentryChange() {
   	this.setState({
-    	commentryCheckBox: !this.state.commentryCheckBox
+      commentryCheckBox: !this.state.commentryCheckBox
     })
   }
 
@@ -42,9 +42,19 @@ class  DataEdit extends Component {
   
   handleSubmit = (e) =>{
     e.preventDefault();
-    let card = {questionText:this.state.questionText,type:this.state.mcqCheckBox?'mcq':'commentry'}
+    let card = {
+      questionText:this.state.questionText,
+      mcqCheckBox:this.state.mcqCheckBox,
+      commentryCheckBox:this.state.commentryCheckBox,
+      choices:this.state.choices
+    }
     this.props.newCardFunction(card)
     this.props.hideModalProps();
+    this.setState({
+      questionText:'',
+      mcqCheckBox:false,
+      commentryCheckBox:false
+    })
 }
 
   saveModalData=()=>{
