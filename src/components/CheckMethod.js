@@ -3,8 +3,7 @@ class  McqBox extends Component {
     constructor(){
         super();
         this.state = {
-            inputs:[] ,
-            name:''
+            inputs:[] ,           
         }
     }
     showInputs = (e) =>{
