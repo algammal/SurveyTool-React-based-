@@ -16,11 +16,10 @@ class  McqBox extends Component {
 
     removeInputs=(input)=>{
         input.preventDefault();
-        this.setState((currentState)=>({
-          inputs:currentState.inputs.filter((c)=>{
-            return c.id !== input.id
-          })
-        }))
+        let tempstate = JSON.parse(JSON.stringify(this.state));
+        let inputs = {};
+        tempstate.inputs.pop(inputs);
+        this.setState(tempstate)
        }
        getText = (e) =>{
         let tempstate = JSON.parse(JSON.stringify(this.state));

@@ -133,6 +133,10 @@ li{list-style:none;}
 .mcq-answer {
   margin-top: 20px;
 }
+.choiceRape{
+  width:100%;
+  display: flex;
+}
 .submit-btn {
   margin-top: 20px;
 background-color: #47f699;

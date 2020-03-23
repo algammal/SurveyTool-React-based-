@@ -10,7 +10,11 @@ class Home extends Component {
         }
     this.createCard = this.createCard.bind(this)
     }
-
+    removeCard = (id)=>{
+        let tempstate = JSON.parse(JSON.stringify(this.state));
+        tempstate.cards.splice(id ,1)
+        this.setState(tempstate)
+    }
     createCard = (newCard) =>{
        this.setState({cards:this.state.cards.push(newCard)});
     }
@@ -21,7 +25,8 @@ class Home extends Component {
         let ArrayOfCards = [];
         let key = 0 ;
         cards.map((card)=>{
-            let tempCard  = <Card showModalFunc = {this.showModal} cardData={card}  index ={key} />;
+            card.id= key
+            let tempCard  = <Card cardRemovFunc={this.removeCard} showModalFunc = {this.showModal} cardData={card}  key ={key} />;
             ArrayOfCards.push(tempCard)
             key++;
         })
@@ -52,8 +57,7 @@ class Home extends Component {
             <button className="save-survey btn btn-lg  glyphicon glyphicon-floppy-disk">
                 <span className="add-txt">Save Survey</span>
             </button>
-            <this.cardsRender key='cardrender'/>
-            {/* <this.dummyButton name="AlGammal" key='example'/> */}
+            <this.cardsRender cardRemovFunc={this.removeCard} key='cardrender'/>
             <DataEdit newCardFunction={this.createCard} key='dataedit' showModalProps={this.state.showModal} hideModalProps ={this.hideModal}/>
         </div>
     )
