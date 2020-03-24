@@ -6,6 +6,9 @@ body {
   display:block;
   background-color: #f9f9f9;
 }
+.btn{
+  padding-right: 10px !important;
+}
 html { 
   height:100%;
   display: inline-block;
@@ -14,7 +17,14 @@ html {
   float: left;
   width:100%;
 }
-
+.newCard{
+  float: left;
+  width:100%;
+}
+.homeCont:last-child .question-item{
+  margin-bottom:10px;
+  margin-top: 10px;
+}
 .Nav-main-cont{
   width: 100%;
   display: flex;
@@ -240,10 +250,15 @@ margin-left: 5px;
 font-size: 20px;
 }
 .modal-submit-btn{
-	background-color: #44e38e;;
+	background-color: #31b0d5;;
 	border: 0px;
 	border-radius: 7px;
-	padding: 8px;
+  padding: 8px;
+  color:#fff;
+}
+.btn.btn-default{
+  border:1px solid #31b0d5;
+  color:#31b0d5;
 }
 .modal-footer{border-top:none;}
 .question-type .check-answer .chk-ans{color:#333;font-weight:normal;}
@@ -256,8 +271,11 @@ font-size: 20px;
 	border-radius: 3px;
 	padding: 5px;
 }
+.textBoxComp button:first-child{
+  margin-right: 15px;
+}
 .btnCheckinBtn-remove {
-    background-color: #babf6a;
+    background-color: #db4747;
     font-size: 14px;
     color: #fff;
     border: none;
@@ -274,8 +292,13 @@ font-size: 20px;
 font-size: 14px;
 color: #fff;
 border: none;
-border-radius: 3px;
+border-radius: 26px;
 padding: 7px;
+}
+.btn-info{
+  background-color: #31b0d5;
+  border:1px solid #31b0d5;
+  border-radius: 26px;
 }
 .edit-btn{
 	float: right;
@@ -303,7 +326,7 @@ padding: 7px;
 	border-radius: 6px;
 	margin-left: 5px;
 }
-.content-added{padding-right:0px; padding-left:0px;margin-top:20px;background-color: #fff;}
+.content-added{padding-right:0px; padding-left:0px;background-color: #fff;}
 .question-item {
   height: auto;
   margin-top: 20px;
@@ -325,7 +348,7 @@ padding: 7px;
   border-radius: 4px;
   max-height: 90px;
   min-height: 50px;
-  color: #fff;
+  color: #5e5e5e;
   border: 1px solid #e5e5e5;
 }
 .btn-cont{
@@ -342,12 +365,12 @@ padding: 7px;
 }
 .admin.page-container{height:100%;}
 .save-survey{
-	background-color: #44e38e;
 	font-size: 14px;
-	color: #fff;
+	color: #31b0d5;
 	border: none;
-	border-radius: 3px;
-	padding: 7px;
+	border-radius: 26px;
+  padding: 7px;
+  border: 1px solid #31b0d5;
 }
 /*EO: modal style*/
 /*SO scroll btn*/

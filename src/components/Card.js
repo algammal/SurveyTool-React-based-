@@ -14,7 +14,7 @@ class Card extends Component {
     render(){
     return(
         //if(this.props.type === "mcq"){ 
-        <div key='card' className='newline'>
+        <div key='card' className='newCard'>
              <div className="content-added container">
                     <div className="question-item col-xs-12">
                          <button onClick={this.removeCard} id={this.props.key} className="remove-question glyphicon glyphicon-minus-sign" type="button"></button>
@@ -24,6 +24,7 @@ class Card extends Component {
                         </div>
                         <form>
                         <div className="col-xs-12 mcq-answer">
+                        {this.props.cardData.mcqCheckBox?
                         <div className='choiceRape'>
                         {this.props.cardData.choices.map((choice)=>{
                              return (
@@ -33,7 +34,7 @@ class Card extends Component {
                             </div>
                         )
                         })}
-                       </div>
+                       </div>:''}
                         {this.props.cardData.commentryCheckBox?
                         <div className='textField'>
                             <textarea className='textArea'></textarea>

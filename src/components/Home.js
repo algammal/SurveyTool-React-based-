@@ -50,7 +50,7 @@ class Home extends Component {
     }
     render(){ 
     return(
-    <div className='newline'>
+    <div className='homeCont'>
         <div className='btn-cont container'>
             <button onClick ={this.showModal} className="quest-itemplus btn btn-lg  glyphicon glyphicon-plus-sign">
                 <span className="add-txt">Add Question</span>
