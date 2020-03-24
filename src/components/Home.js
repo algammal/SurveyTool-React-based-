@@ -51,12 +51,14 @@ class Home extends Component {
     render(){ 
     return(
     <div className='newline'>
+        <div className='btn-cont container'>
             <button onClick ={this.showModal} className="quest-itemplus btn btn-lg  glyphicon glyphicon-plus-sign">
                 <span className="add-txt">Add Question</span>
             </button>
             <button className="save-survey btn btn-lg  glyphicon glyphicon-floppy-disk">
                 <span className="add-txt">Save Survey</span>
             </button>
+        </div>
             <this.cardsRender cardRemovFunc={this.removeCard} key='cardrender'/>
             <DataEdit newCardFunction={this.createCard} key='dataedit' showModalProps={this.state.showModal} hideModalProps ={this.hideModal}/>
         </div>
