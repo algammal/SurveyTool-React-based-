@@ -24,6 +24,7 @@ class Card extends Component {
                         </div>
                         <form>
                         <div className="col-xs-12 mcq-answer">
+                        {this.props.cardData.mcqCheckBox?
                         <div className='choiceRape'>
                         {this.props.cardData.choices.map((choice)=>{
                              return (
@@ -33,7 +34,7 @@ class Card extends Component {
                             </div>
                         )
                         })}
-                       </div>
+                       </div>:''}
                         {this.props.cardData.commentryCheckBox?
                         <div className='textField'>
                             <textarea className='textArea'></textarea>
